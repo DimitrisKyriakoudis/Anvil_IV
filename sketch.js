@@ -1,3 +1,5 @@
+var x = 0;
+
 function setup() {
   createCanvas(800, 800);
 }
@@ -5,5 +7,9 @@ function setup() {
 function draw() {
   background(255, 0, 0);
   console.log("hello, world!");
-  ellipse(width/2, height/2, 50, 50);
+  let r = 50;
+  ellipse(x, height/2, r, r*2);
+  x += 2;
+  if(x > width + r)
+    x = 0;
 }
