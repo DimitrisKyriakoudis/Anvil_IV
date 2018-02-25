@@ -9,12 +9,12 @@ function draw() {
   changeText();
   console.log("hello, world!");
   let r = 50;
-  ellipse(x, height/2, r, r);
+  ellipse(x, height/2, r, r*2);
   x += 2;
   if(x > width + r)
     x = 0;
 }
 
-setInterval(function(){
+//setInterval(function(){
   //your function here
-}, 500);
+//}, 500);
