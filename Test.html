@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        p.a{
+            color: #ecf0f1;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 30px;
+        }
+        
+        .someSize{
+            font-size: 24px;
+            width: 200px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        
+        .wrapper {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -100px;
+        }
+    </style>
+    <script src="./data.js"></script>
+    <script>
+        function typeOf(obj) {
+            return {}.toString.call(obj).split(' ')[1].slice(0, -1).toLowerCase();
+        }
+
+        var firstLayer;
+        var speed = 200;
+        var x = 0;
+        var i = 1; // the dict some how start with 1
+
+        function sleep(milliseconds) {
+            setTimeout(() => {
+
+            }, milliseconds);
+        }
+        function waitAndPrint(sent) {
+            for (var x = 0; x < sent.length; x++) {
+                (function (x) {
+                    window.setTimeout(function () {
+                        text.innerHTML = sent[x];
+                    }, x * speed);
+                }(x));
+            }
+        }
+
+        function main() {
+            var text = document.getElementById('text');
+            speed = document.getElementById('speed').value;
+            console.log(speed);
+            t = 0;
+            for (subDict in DATA) {
+                for (var i = 1; i < Object.keys(DATA[subDict]).length; i++) {
+                    t += speed * DATA[subDict][i].split(' ').length;
+                    (function (i) {
+                        window.setTimeout(function () {
+                            waitAndPrint(DATA[subDict][i].split(' '));
+                        }, t);
+
+                    }(i));
+                }
+            }
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body bgcolor = "#34495e">
+    <div class = "wrapper">
+        <p class = "a" id='text'>GoT</p>
+        <button class="someSize" onclick="main()">Start</button>
+        <p style = 'text-align: center'><input type = "number" id = "speed"></p>
+    </div>
+</body>
+
+</html>
