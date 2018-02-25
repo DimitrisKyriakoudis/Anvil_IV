@@ -9,7 +9,7 @@ function draw() {
   changeText();
   console.log("hello, world!");
   let r = 50;
-  ellipse(x, height/2, r, r*2);
+  ellipse(x, height/2, r, r);
   x += 2;
   if(x > width + r)
     x = 0;
