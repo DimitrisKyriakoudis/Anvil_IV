@@ -7,23 +7,27 @@
             color: #ecf0f1;
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
-            vertical-align: middle;
-            font-size: 30px;
+            height: 300px;
+            font-size: 100px;
         }
-        
+
         .someSize{
             font-size: 24px;
             width: 200px;
             height: 50px;
             border-radius: 10px;
         }
-        
+
         .wrapper {
             position: fixed;
-            top: 50%;
+            top: 5%;
             left: 50%;
             margin-top: -50px;
             margin-left: -100px;
+        }
+        .w {
+            top: 90%;
+            left: 50%;
         }
     </style>
     <script src="./data.js"></script>
@@ -37,11 +41,6 @@
         var x = 0;
         var i = 1; // the dict some how start with 1
 
-        function sleep(milliseconds) {
-            setTimeout(() => {
-
-            }, milliseconds);
-        }
         function waitAndPrint(sent) {
             for (var x = 0; x < sent.length; x++) {
                 (function (x) {
@@ -55,7 +54,8 @@
         function main() {
             var text = document.getElementById('text');
             speed = document.getElementById('speed').value;
-            console.log(speed);
+	    speed = (1000*60)/speed;
+	    console.log(speed);
             t = 0;
             for (subDict in DATA) {
                 for (var i = 1; i < Object.keys(DATA[subDict]).length; i++) {
@@ -80,7 +80,10 @@
     <div class = "wrapper">
         <p class = "a" id='text'>GoT</p>
         <button class="someSize" onclick="main()">Start</button>
-        <p style = 'text-align: center'><input type = "number" id = "speed"></p>
+        <p style = 'text-position: absolute; width ="400px" '><input type = "number" id = "speed"></p>
+    </div>
+
+    <div class = "w">
     </div>
 </body>
 
